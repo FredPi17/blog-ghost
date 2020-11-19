@@ -1,3 +1,4 @@
 .secrets/certbot/digitalocean.ini
 ghost/content
 .env
+db/*
