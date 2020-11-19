@@ -52,7 +52,7 @@ Il peut arriver que la base de donnéer mysql ne soit pas terminée d'être dép
 Travaux futurs
 --------------
 
-- [] Créer volume pour mysql pour faire persister les données sur le serveur hote
+- [ ] Créer volume pour mysql pour faire persister les données sur le serveur hote
 - [x] Ajouter fichier de variables d'environement pour : nom de domaine, variable de déploiement letsencrypt, etc.. 
-- [] Créer un système de renouvellement de certificat Letsencrypt
-- [] Déployer le projet avec terraform
+- [ ] Créer un système de renouvellement de certificat Letsencrypt
+- [ ] Déployer le projet avec terraform
