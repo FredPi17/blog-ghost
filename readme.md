@@ -6,7 +6,7 @@ Ce projet est un déploiement de la solution de site internet Ghost
 Préparation du projet
 -----------
 
-1. Cloner le projet:
+1. Cloner le projet :
 
     `git clone https://github.com/FredPi17/blog-ghost`
 
@@ -52,5 +52,7 @@ Il peut arriver que la base de donnéer mysql ne soit pas terminée d'être dép
 Travaux futurs
 --------------
 
-- Créer volume pour mysql pour faire persister les données sur le serveur hote
-- Ajouter fichier de variables d'environement pour : nom de domaine, variable de déploiement letsencrypt, etc.. 
+[ ] Créer volume pour mysql pour faire persister les données sur le serveur hote
+[x] Ajouter fichier de variables d'environement pour : nom de domaine, variable de déploiement letsencrypt, etc.. 
+[ ] Créer un système de renouvellement de certificat Letsencrypt
+[ ] Déployer le projet avec terraform
