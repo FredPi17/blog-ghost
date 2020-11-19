@@ -1,0 +1,40 @@
+worker_processes 1;
+events { worker_connections 1024; }
+http { 
+    sendfile on;
+
+    upstream docker-nginx {
+        server nginx:80;
+    }
+    proxy_set_header   Host "$host";
+    proxy_set_header   X-Real-IP "$remote_addr";
+    proxy_set_header   X-Forwarded-For "$proxy_add_x_forwarded_for";
+    proxy_set_header   X-Forwarded-Host "$server_name";
+    server {
+        listen 80;
+        
+        server_name ${GHOST_NAME};
+
+        location /.well-known/acme-challenge/ {
+            root /var/www/certbot;
+        }
+        location / {
+            return 301 https://${GHOST_NAME};
+        }
+    }
+
+    server {
+        listen 443 ssl;
+        server_name ${GHOST_NAME};
+        ssl_certificate /etc/letsencrypt/live/${GHOST_NAME}/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/${GHOST_NAME}/privkey.pem;
+        location / {
+            proxy_pass http://ghost:2368/;
+            proxy_set_header Host "${GHOST_NAME}";
+            proxy_set_header    Host                "${GHOST_NAME}";
+            proxy_set_header    X-Real-IP           "$remote_addr";
+            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header    X-Forwarded-For     "$proxy_add_x_forwarded_for";
+        }
+    }
+}
